@@ -4,6 +4,7 @@ import { describe, it, expect } from '@jest/globals'
 describe('Functor listMap', () => {
   const increment = (n: number) => n + 1
   const square = (n: number) => n * n
+  const filterEven = (n: number) => n % 2 === 0
 
   //hard code function in listMap
   it('should increment a normal list', () => {
@@ -26,5 +27,9 @@ describe('Functor listMap', () => {
   it('should map over a list with an arbitrary function', () => {
     expect(map(increment)([1, 2, 3])).toEqual([2, 3, 4])
     expect(map(square)([1, 2, 3])).toEqual([1, 4, 9])
+  })
+
+  it('should map over a list with an arbitrary function', () => {
+    expect(map(filterEven)([1, 2, 3, 4])).toEqual([false, true, false, true])
   })
 })
